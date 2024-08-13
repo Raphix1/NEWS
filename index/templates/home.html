@@ -12,6 +12,12 @@
       <span class="fs-4">Новости?!</span>
     </a>
     <hr>
+    <form method="post" action="search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+    {% csrf_token %}
+     <input type="search" class="form-control form-control-dark" placeholder="Поиск..."
+           aria-label="Search" name="search_news">
+        <button type="submit" class="btn btn-primary">Поиск</button>
+        <hr>
      <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
         <a href="/" class="nav-link active" aria-current="page">
