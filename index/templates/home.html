@@ -33,6 +33,32 @@
         </a>
       </li>
     <hr>
+    {% if user.is_authenticated %}
+    <ul class="nav nav-pills flex-column mb-2">
+      <li class="nav-item">
+        <a href="/logout" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="1" height="1"><use xlink:href="/logout"></use></svg>
+            Выйти
+        </a>
+      </li>
+    </ul>
+    {% else %}
+    <ul class="nav nav-pills flex-column mb-2">
+      <li class="nav-item">
+        <a href="/accounts/login" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="1" height="1"><use xlink:href="/accounts/login"></use></svg>
+            Войти
+        </a>
+      </li>
+    </ul><ul class="nav nav-pills flex-column mb-2">
+      <li class="nav-item">
+        <a href="/register" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="1" height="1"><use xlink:href="/register"></use></svg>
+            Регистрация
+        </a>
+      </li>
+    </ul>
+    {% endif %}
 </div>
 <div class="container px-4 py-5" id="featured-3">
     <h2 class="pb-2 border-bottom">Лента новостей</h2>
