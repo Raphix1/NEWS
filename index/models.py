@@ -7,7 +7,7 @@ class NewsCategory(models.Model):
         return self.name
 
 class News(models.Model):
-    head = models.CharField(max_length=64)
+    head = models.CharField(max_length=128)
     text = models.TextField()
     category = models.ForeignKey(NewsCategory, on_delete=models.CASCADE)
     time = models.DateField()

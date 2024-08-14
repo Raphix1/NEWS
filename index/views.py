@@ -14,18 +14,25 @@ def home_page(request):
     return render(request, 'home.html', context)
 
 def get_category(request):
-    return render(request, 'category.html')
+    exact_category = NewsCategory.objects.get1
 
-def get_news(request):
-    return render(request, 'news.html')
+    context = {'ecat': exact_category}
+    return render(request, 'category.html', context)
+
+def get_news(request, pk):
+    exact_news = News.objects.get(id=pk)
+
+    # Передаем данные на фронт
+    context = {'enews': exact_news}
+    return render(request, 'news.html', context)
 
 def search_news(request):
     if request.method == 'POST':
-        get_product = request.POST.get('search_news')
+        get_news = request.POST.get('search_news')
 
         try:
-            exact_product = News.objects.get(pr_name__icontains=get_product)
-            return redirect(f'product/{exact_product.id}')
+            exact_news = News.objects.get(head__icontains=get_news)
+            return redirect(f'news/{exact_news.id}')
         except:
             print('не нашел')
             return redirect('/')
